@@ -1,0 +1,34 @@
+name: Extract M3U8 Links
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual triggering from the GitHub Actions UI
+
+jobs:
+  extract-links:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run M3U8 extraction script
+        run: |
+          python extract_m3u8.py
+
+      - name: Upload link.txt as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: link-file
+          path: link.txt
