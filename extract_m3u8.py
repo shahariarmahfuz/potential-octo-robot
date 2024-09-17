@@ -1,7 +1,11 @@
 import requests
+import time
 
 def grab(url):
     try:
+        # Wait for 10 seconds before fetching the URL
+        time.sleep(10)
+        
         response = requests.get(url, timeout=15).text
     except requests.RequestException as e:
         return f"Error fetching URL: {e}"
