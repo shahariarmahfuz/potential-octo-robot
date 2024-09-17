@@ -37,7 +37,7 @@ def grab(url):
         return f"Error fetching stream URL: {e}"
 
 def main():
-    url = "https://example.com"  # Replace this URL with the one you want to test
+    url = "https://www.youtube.com/live/26LoMZZdSUA?si=Ru3f_9lpXCwvmcSg"  # Replace this URL with the one you want to test
     result = grab(url)
     print(result)
 
