@@ -1,0 +1,5 @@
+Channel1 | Group1 | https://example.com/logo.png | tvgid1
+https://www.youtube.com/live/26LoMZZdSUA?si=V2pDaGmYVyWPp0Hu
+
+Channel2 | Group2 | https://example.com/logo2.png | tvgid2
+https://example.com/stream2.m3u8
