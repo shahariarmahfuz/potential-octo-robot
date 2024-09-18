@@ -1,21 +1,23 @@
-name: Extract M3U8 Links
+name: channel-name
 
 on:
-  push:
+  schedule:
+    - cron: '0 0/3 * * *'
+  pull_request:
     branches:
       - main
-  workflow_dispatch: # Allows manual triggering from the GitHub Actions UI
+  workflow_dispatch:
 
 jobs:
-  extract-links:
+  build:
     runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
+    steps:
+      - uses: actions/checkout@v2
+      
+      # Install Python and dependencies
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
@@ -23,12 +25,7 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run M3U8 extraction script
+      - name: Run channel-name script
         run: |
-          python extract_m3u8.py
-
-      - name: Upload link.txt as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: link-file
-          path: link.txt
+          chmod +x channel-name.sh
+          ./channel-name.sh
